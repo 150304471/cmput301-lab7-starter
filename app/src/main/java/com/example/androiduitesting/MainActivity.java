@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.content.Intent;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         cityList.setAdapter(cityAdapter);
+
+        cityList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String selectedCity = (String) parent.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, ShowActivity.class);
+
+                intent.putExtra(ShowActivity.EXTRA_CITY_NAME, selectedCity);
+
+                startActivity(intent);
+            }
+        });
 
         final Button addButton = findViewById(R.id.button_add);
         addButton.setOnClickListener(new View.OnClickListener() {
