@@ -88,11 +88,7 @@ public class MainActivityTest {
         onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Calgary"));
         onView(withId(R.id.button_confirm)).perform(click());
 
-        onData(is(instanceOf(String.class)))
-                .inAdapterView(withId(R.id.city_list))
-                .atPosition(0)
-                .perform(click());
-
+        onData(is(instanceOf(String.class))).inAdapterView(withId(R.id.city_list)).atPosition(0).perform(click());
         intended(hasComponent(ShowActivity.class.getName()));
     }
 
@@ -103,16 +99,9 @@ public class MainActivityTest {
         onView(withId(R.id.button_add)).perform(click());
         onView(withId(R.id.editText_name)).perform(ViewActions.typeText(cityName));
         onView(withId(R.id.button_confirm)).perform(click());
-        onData(is(instanceOf(String.class)))
-                .inAdapterView(withId(R.id.city_list))
-                .atPosition(0)
-                .perform(click());
 
-        intended(Matchers.allOf(
-                hasComponent(ShowActivity.class.getName()),
-                hasExtra(ShowActivity.EXTRA_CITY_NAME, cityName)
-        ));
-
+        onData(is(instanceOf(String.class))).inAdapterView(withId(R.id.city_list)).atPosition(0).perform(click());
+        intended(Matchers.allOf(hasComponent(ShowActivity.class.getName()), hasExtra(ShowActivity.EXTRA_CITY_NAME, cityName)));
         onView(withText(cityName)).check(matches(isDisplayed()));
     }
 
@@ -121,10 +110,7 @@ public class MainActivityTest {
         onView(withId(R.id.button_add)).perform(click());
         onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Edmonton"));
         onView(withId(R.id.button_confirm)).perform(click());
-        onData(is(instanceOf(String.class)))
-                .inAdapterView(withId(R.id.city_list))
-                .atPosition(0)
-                .perform(click());
+        onData(is(instanceOf(String.class))).inAdapterView(withId(R.id.city_list)).atPosition(0).perform(click());
 
         onView(withId(R.id.back_button)).check(matches(isDisplayed()));
         onView(withId(R.id.back_button)).perform(click());
